@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>popcornwith.me | Home </title>
+	<link href="css/main.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Lobster|Muli:300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <section>
+		<div id="title" class="slide header">
+			<div id="boxes">
+				<h1>popcornwith.me</h1>
+				<ul>
+					<li id="myButton">Create Room</li>
+				</ul>
+				<script type="text/javascript">
+				document.getElementById("myButton").onclick = function () {
+					// We first generate a random room: 00000 to zzzzz (base 36), aka 0 to 60466175
+					var room = Math.floor( Math.random() * 60466175 );
+					var room36 = room.toString( 36 ); // Then convert to base 36
+					location.href = room36;
+				};
+				</script>
+           	</div>
+		</div>
+		
+		<div class="slide">
+			<div class="title">
+				<h1>About</h1>
+				Watch YouTube videos with your friends by clicking Create Room and entering a video link.<br><br>
+				&copy; 2015 Kyle Windsor, Chelsea Xu, Jieni Hou, Madhavi Mohan.
+			</div>
+	    </div>
+	</section>
+</body>
+</html>

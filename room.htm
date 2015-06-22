@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>popcornwith.me | Room </title>
+	<link href="css/main.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Lobster|Muli:300' rel='stylesheet' type='text/css'>
+	<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		var player;
+		var curVidTime = 0;
+		
+		function onPlayerReady(event) {
+			event.target.playVideo();
+			event.target.seekTo( curVidTime );
+			console.log( curVidTime );
+		}
+		
+		var interval = setInterval( function() { // Update position
+			curVidTime++;
+		}, 1000 );
+		
+		var socket = io();
+		socket.on( "loadVideo", function( msg ) {
+			curVidTime = msg.time;
+			if( player == null ) {
+				player = new YT.Player( "player", {
+					height: '720',
+					width: '1280',
+					videoId: msg.vid,
+					events: {
+						'onReady': onPlayerReady
+					}
+				} );
+			} else {
+				player.loadVideoById( msg.vid, msg.time, "hd720" );
+			}
+		} );
+		
+		socket.on( "updatePosition", function( msg ) {
+			if( msg < player.getDuration() ) {
+				var diff = msg - curVidTime;
+				if( diff < 0 ) {
+					diff = -diff;
+				}
+				
+				if( diff > 2 ) {
+					player.seekTo( msg );
+					curVidTime = msg + 0.5;
+				}
+			} else {
+				//player.seekTo( player.getDuration() );
+			}
+		} );
+		
+		$(document).ready( function() {
+			$( "#submit" ).click( function() {
+				socket.emit( "new", $( "#videourl" ).val() );
+			} );
+			
+			var loc = window.location.pathname;
+			socket.emit( "setRoom", loc.substring( loc.indexOf( "/" ) + 1 ) );
+		} );
+	</script>
+</head>
+
+<body>
+	<header class="main-header">
+	<h1>Popcornwith.me</h1>
+	<nav>
+		<a href="../">Home</a>
+	</nav>
+	</header>
+	
+	<section>
+		<div id="player"></div><br><br>
+		<h1>New Video</h1><br><br>
+		<input type="text" id="videourl" class="room" />
+		<button id="submit" class="submit-button room">Go</button>
+	</section>
+	
+	<footer>
+		<p> &copy; 2015 Kyle Windsor, Chelsea Xu, Jieni Hou, Madhavi Mohan. </p>
+	</footer>
+</body>
+
+</html>

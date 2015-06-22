@@ -1,0 +1,9 @@
+{
+  "name": "popcornwith.me",
+  "version": "1.0.0",
+  "description": "A collaborative, innovative, disruptive popcorn experience.",
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.3.5"
+  }
+}

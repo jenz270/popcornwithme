@@ -1,0 +1,187 @@
+/************************
+GENERAL
+************************/
+body{
+	background-color: #EEE;
+    font-family: 'Muli', sans-serif;
+    margin: 0;
+    padding: 0;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+a{
+	color: black;
+}
+
+html{
+	height:100%;
+	overflow: hidden;
+}
+
+/************************
+HEADER
+************************/
+.main-header{
+	height: 90px;
+	float:left;
+	margin: 0 0 30px 0;
+	padding: 5px;
+	width: 100%;
+	background-color: #44FF44;
+	box-shadow: 10px 0px 10px rgba( 0, 0, 0, 0.2 );
+}
+
+h1{
+	font-family: 'Lobster', cursive;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	text-shadow: 0px 0px 10px rgba( 150, 255, 150, 1 );
+}
+
+nav{
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+}
+
+nav a{
+	font-weight: 300;
+	font-size: 25px;
+	padding: 15px 10px;
+}
+
+/***********************
+FOOTER
+***********************/
+footer{
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	background-color: #44FF44;
+}
+
+/************************
+INDEX
+************************/
+
+#boxes{
+	padding: 20px;
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
+	position: relative;
+	background: white;
+	box-shadow: 0px 10px 10px rgba( 0, 0, 0, 0.2 );
+}
+
+#boxes ul{
+	list-style: none;
+	padding: 0;
+	position: relative;
+	background: white;
+}
+
+#boxes li{
+	display: inline-block;
+	background-color: rgba( 100, 255, 100, 1 );
+	padding: 20px;
+	font-size: 30px;
+	color: #FFF;
+	box-shadow: 0px 10px 10px rgba( 0, 0, 0, 0.2 );
+}
+
+#boxes li:hover {
+	background-color: rgba( 150, 255, 150, 1 );
+	cursor: pointer;
+}
+
+#button{
+	position: relative;
+	background: white;
+}
+
+h1{
+	font-size: 4.0em;
+}
+
+.slide {
+	position: relative;
+	padding: 20vh 10%;
+	width: 100vw;
+	box-sizing: border-box;
+	box-shadow: 0 -1px 10px rgba(0,0,0,.7);
+	transform-style: inherit;
+}
+
+img{
+	position: absolute;
+	top: 50%;
+	left: 35%;
+	width: 320px;
+	height: 240px;
+	transform: translateZ(.25px) scale(.75) translateX(-94%) translateY(-100%) rotate(2deg);
+	padding: 10px;
+	border-radius: 5px;
+	background: rgba(240,230,220, .7);
+	box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+img:last-of-type {
+	transform: translateZ(.4px) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+}
+
+.slide:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left:0;
+	right:0;
+}
+
+.title {
+	width: 50%;
+	padding: 5%;
+	border-radius: 5px;
+}
+
+.slide:nth-child(n) .title {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.slide, .slide:before {
+	background: 50% 50% / cover;  
+}
+
+.header {
+	text-align: center;
+	padding: 10vh 10%;
+}
+
+#title {
+	background-image: url("http://e.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2013/10/3020051-poster-1280-popcorn.jpg");
+	background-attachment: fixed;
+	height: 50%;
+}
+
+/************************
+ROOM
+************************/
+
+section {
+	text-align: center;
+}
+input.room {
+	font-size: 2.0em;
+}
+button.room {
+	font-size: 2.0em;
+}
